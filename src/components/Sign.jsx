@@ -47,7 +47,7 @@ const Sign = () => {
             </div>
             <div className="sign__modal-bottom">
               <button onClick={() => setOpenModal(false)}>Cancel</button>
-              <button className="sign__modal-bottom-create" onClick={create}>
+              {/* <button className="sign__modal-bottom-create" onClick={create}>
                 Create
               </button>
               <br />
@@ -59,7 +59,7 @@ const Sign = () => {
                     className="sign__modal-bottom-signature"
                   />
                 </>
-              )}
+              )} */}
             </div>
           </div>
         </div>
@@ -69,3 +69,6 @@ const Sign = () => {
 };
 
 export default Sign;
+
+
+// https://www.commoninja.com/blog/how-to-build-a-digital-signature-pad-in-react
