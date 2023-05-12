@@ -1,14 +1,18 @@
 import { useRouter } from "next/router";
+import { GetData } from "../pages/api/fetch";
 
 const Logout = () => {
   const router = useRouter();
-  const handleLogout = async (e) => {
-    const response = await fetch("/api/logout");
-    if (response.ok) {
-      return router.push("/");
+
+  const handleLogout = async () => {
+    const results = await GetData("logout");
+    if (results.status === 200) {
+      const response = await fetch("/api/logout");
+      if (response.ok) {
+        return router.push("/");
+      }
     }
   };
-
   return (
     <div>
       <button onClick={() => handleLogout()}>Logout</button>

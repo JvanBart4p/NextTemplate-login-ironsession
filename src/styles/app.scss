@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@forward "./pages/index.scss";
+@forward "./pages/private.scss";
+@forward "./pages/custom404.scss";
+//layout
+@forward "./components/layout/header.scss";
+@forward "./components/layout/footer.scss";
+//components
+@forward "./components/login.scss"
