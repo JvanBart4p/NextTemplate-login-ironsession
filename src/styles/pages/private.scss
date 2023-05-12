@@ -1,15 +1,29 @@
 @use "../variables.scss" as *;
 
-.private{
+.private {
     min-height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 10rem;
-    &__content{
+    margin: 10rem 2rem 5rem;
+
+    &__content {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        min-width: 80vw;
+        text-align: center;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 80vw;
+        &-items {
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2, 50% 50%);
+        }
     }
 }

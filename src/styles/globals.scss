@@ -17,6 +17,12 @@ body {
   scroll-behavior: smooth;
   font-size: 1.6rem;
 
+  input {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid $button-color;
+  }
+
   &.disable-scroll {
     overflow: hidden;
   }
