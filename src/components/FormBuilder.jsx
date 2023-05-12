@@ -1,4 +1,7 @@
+import Sign from "./Sign";
+
 const FormsBuilder = ({ forms }) => {
+  console.log(forms)
   return (
     <div>
       {forms &&
@@ -13,14 +16,20 @@ const FormsBuilder = ({ forms }) => {
                     key={`${label.name}${i}`}
                   >
                     <label> {label.label}</label>
-                    {label.rules === "required" ? (
-                      <input
-                        type={label.type}
-                        placeholder={label.name}
-                        required
-                      />
+                    {label.type === "canvas" ? (
+                      <Sign />
                     ) : (
-                      <input type={label.type} placeholder={label.name} />
+                      <>
+                        {label.rules === "required" ? (
+                          <input
+                            type={label.type}
+                            placeholder={label.name}
+                            required
+                          />
+                        ) : (
+                          <input type={label.type} placeholder={label.name} />
+                        )}
+                      </>
                     )}
                   </div>
                 );

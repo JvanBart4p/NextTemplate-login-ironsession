@@ -1,0 +1,90 @@
+.sign {
+    text-align: center;
+    margin-top: 30px;
+    button {
+        padding: 10px 20px;
+        background-color: inherit;
+        border: 1px solid gray;
+        &:hover {
+            background-color: gray;
+            color: white;
+        }
+    }
+    &__modalContainer {
+        position: fixed;
+        width: 100vw;
+        height: 100%;
+        display: flex;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    &__modal {
+        width: 90%;
+        max-width: 500px;
+        border: 5px;
+        padding: 10px;
+        background-color: white;
+        box-sizing: border-box;
+        &-bottom {
+            text-align: right;
+            margin-top: 10px;
+            button {
+                padding: 6px 10px;
+            }
+            &-create {
+                margin-left: 10px;
+                background-color: rgb(126, 119, 119);
+                color: white;
+            }
+            &-signature {
+                width: 200px;
+                height: 70px;
+                margin-top: 20px;
+                box-shadow: 0 0 4px 2px gainsboro;
+                padding: 10px;
+                object-fit: contain;
+            }
+        }
+    }
+    &__sigPadContainer {
+        background-color: rgb(238, 235, 235);
+        padding: 0 10px 10px;
+        hr {
+            margin-bottom: unset;
+            background-color: gainsboro;
+        }
+        button {
+            border: none;
+            margin-left: auto;
+            color: rgb(78, 75, 75);
+            padding: 0;
+            display: block;
+            margin-top: 5px;
+            &:hover {
+                background-color: unset;
+                color: black;
+            }
+        }
+    }
+    &__sigCanvas {
+        width: 100%;
+        height: 200px;
+    }
+    &__sigPad-penColors {
+        margin-bottom: 10px;
+        p {
+            display: inline-block;
+            margin-right: 5px;
+        }
+        span {
+            padding: 0px 9px;
+            border-radius: 100%;
+            margin-right: 5px;
+        }
+    }
+}

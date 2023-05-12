@@ -1,3 +1,5 @@
+@use "../variables.scss" as *;
+
 .page_404 {
     padding: 40px 0;
     background: #fff;
@@ -26,9 +28,12 @@
 .link_404 {
     color: #fff !important;
     padding: 10px 20px;
-    background: #39ac31;
+    background: $button-color;
     margin: 20px 0;
     display: inline-block;
+    &:hover{
+        background: $button-hover-color;
+    }
 }
 .contant_box_404 {
     margin-top: -50px;

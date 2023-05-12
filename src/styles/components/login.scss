@@ -11,7 +11,7 @@
         border: none;
         &:hover {
             cursor: pointer;
-            background-color: lightblue;
+            background-color: $button-hover-color;
         }
     }
     input {
