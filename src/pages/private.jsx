@@ -2,7 +2,7 @@ import React from "react";
 import { withSessionSsr } from "./lib/config/withSession";
 import { GetData } from "./api/fetch";
 import { useState } from "react";
-import FormsBuilder from "../components/FormBuilder";
+import FormsBuilder from "../components/forms/FormBuilder";
 import Relations from "../components/Relations";
 
 const PrivatePage = ({ user }) => {

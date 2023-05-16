@@ -2,9 +2,8 @@ import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import SignatureCanvas from "react-signature-canvas";
 
-const Sign = () => {
+const Sign = ({ label, handleChange }) => {
   const [openModel, setOpenModal] = useState(false);
-
   const [penColor, setPenColor] = useState("black");
   const [imageURL, setImageURL] = useState(null);
   const sigCanvas = useRef();
@@ -15,6 +14,10 @@ const Sign = () => {
     setImageURL(URL);
     setOpenModal(false);
   };
+
+  useEffect(() => {
+    handleChange(null, label.name, imageURL);
+  }, [imageURL]);
 
   return (
     <div className="sign">
@@ -47,28 +50,29 @@ const Sign = () => {
             </div>
             <div className="sign__modal-bottom">
               <button onClick={() => setOpenModal(false)}>Cancel</button>
-              {/* <button className="sign__modal-bottom-create" onClick={create}>
+              <button className="sign__modal-bottom-create" onClick={create}>
                 Create
               </button>
               <br />
-              {imageURL && (
-                <>
-                  <img
-                    src={imageURL}
-                    alt="signature"
-                    className="sign__modal-bottom-signature"
-                  />
-                </>
-              )} */}
             </div>
           </div>
         </div>
+      )}
+      {imageURL && (
+        <>
+          <Image
+            src={imageURL}
+            width={100}
+            height={60}
+            alt="signature"
+            className="sign__modal-bottom-signature"
+          />
+        </>
       )}
     </div>
   );
 };
 
 export default Sign;
-
 
 // https://www.commoninja.com/blog/how-to-build-a-digital-signature-pad-in-react

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PostData } from "./api/fetch";
-import Login from "../components/login";
+import Login from "../components/forms/login";
 import { useRouter } from "next/router";
 import { withSessionSsr } from "./lib/config/withSession";
 import Link from "next/link";
