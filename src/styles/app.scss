@@ -3,9 +3,11 @@
 @forward "./pages/index.scss";
 @forward "./pages/private.scss";
 @forward "./pages/custom404.scss";
+@forward "./pages/thankyou.scss";
 //layout
 @forward "./components/layout/header.scss";
 @forward "./components/layout/footer.scss";
 //components
 @forward "./components/forms/login.scss";
 @forward "./components/forms/sign.scss";
+@forward "./components/forms/form.scss";

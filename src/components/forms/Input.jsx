@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-const Input = ({ label, handleChange }) => {
+const Input = ({ label, handleChange, submitted }) => {
+
   return (
     <div className="private__form-items">
       <label> {label.label}</label>

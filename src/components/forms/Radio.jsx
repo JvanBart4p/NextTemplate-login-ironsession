@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 const Radio = ({ label, handleChange }) => {
+
   const [selectedVal, setSelectedVal] = useState(label.options[0]);
   const [newSel, setNewSel] = useState(selectedVal);
 

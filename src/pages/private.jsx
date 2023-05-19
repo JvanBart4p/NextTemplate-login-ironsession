@@ -5,19 +5,14 @@ import { useState } from "react";
 import FormsBuilder from "../components/forms/FormBuilder";
 import Relations from "../components/Relations";
 
-const PrivatePage = ({ user }) => {
-  const [forms, setForms] = useState("");
+const PrivatePage = ({ user, forms }) => {
+  // const [forms, setForms] = useState("");
   const [relaties, setRelaties] = useState("");
 
-  const getFormData = async () => {
-    const form = await GetData("forms/form1");
-    setForms(form);
+  const getFormRelatie = async () => {
+    const relatie = await GetData("relatie");
+    setRelaties(relatie.relatie);
   };
-
-   const getFormRelatie = async () => {
-     const relatie = await GetData("relatie");
-     setRelaties(relatie.relatie)
-   };
 
   return (
     <div className="private">
@@ -25,13 +20,13 @@ const PrivatePage = ({ user }) => {
         <h1>Hello {user.username}</h1>
         <h2>{user.id}</h2>
         <p>Secret Content</p>
-        <button
+        {/* <button
           onClick={() => {
             getFormData();
           }}
         >
           Get Forms
-        </button>
+        </button> */}
         <button
           onClick={() => {
             getFormRelatie();
@@ -40,7 +35,7 @@ const PrivatePage = ({ user }) => {
           Get relatie
         </button>
         <FormsBuilder forms={forms} />
-        <Relations relaties={relaties }/>
+        <Relations relaties={relaties} />
       </div>
     </div>
   );
@@ -49,13 +44,15 @@ const PrivatePage = ({ user }) => {
 export const getServerSideProps = withSessionSsr(async ({ req, res }) => {
   const user = req.session.user;
 
+  const forms = await GetData("forms/form2");
+
   if (!user) {
     return {
       notFound: true,
     };
   }
   return {
-    props: { user },
+    props: { user, forms },
   };
 });
 

@@ -7,7 +7,7 @@ const Select = ({ label, handleChange }) => {
     (e) => {
       handleChange(e, label.name, value);
     },
-    [value],
+    [value]
   );
 
   return (
@@ -20,7 +20,11 @@ const Select = ({ label, handleChange }) => {
       >
         {label.options.map((item, i) => {
           return (
-            <option key={`selectOption${i}`} value={item}>
+            <option
+              key={`selectOption${i}`}
+              value={item}
+              required={label.rules === "required"}
+            >
               {item}
             </option>
           );

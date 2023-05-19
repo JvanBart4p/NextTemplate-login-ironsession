@@ -1,17 +1,40 @@
+import { useState } from "react";
+
 const FileInput = ({ label, handleChange }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    const pdfBase64 = base64.toDataURL("application/pdf")
+    setSelectedFile(pdfBase64);
+    handleChange(null, label.name, pdfBase64);
+  };
+
   return (
     <div className="private__form-items">
       <label> {label.label}</label>
-      {label.rules === "required" ? (
-        <input
-          type={label.type}
-          placeholder={label.name}
-          required={label.rules === "required"}
-          onChange={(e) => handleChange(e, label.name)}
-        />
-      ) : (
-        <input type={label.type} placeholder={label.name} />
-      )}
+      <input
+        type="file"
+        placeholder={label.name}
+        required={label.rules === "required"}
+        onChange={handleFileChange}
+      />
     </div>
   );
 };

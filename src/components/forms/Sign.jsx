@@ -2,22 +2,27 @@ import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import SignatureCanvas from "react-signature-canvas";
 
-const Sign = ({ label, handleChange }) => {
+const Sign = ({ handleChange, setSignature }) => {
   const [openModel, setOpenModal] = useState(false);
   const [penColor, setPenColor] = useState("black");
   const [imageURL, setImageURL] = useState(null);
   const sigCanvas = useRef();
   const colors = ["black", "green", "red"];
 
-  const create = () => {
+  const create = (e) => {
     const URL = sigCanvas.current.getTrimmedCanvas().toDataURL("image/png");
+    const base64Image = URL.replace(/^data:image\/png;base64,/, ""); // Remove the "data:image/png;base64," prefix
+    setSignature(base64Image);
     setImageURL(URL);
     setOpenModal(false);
+
+     handleSignatureChange(base64Image);
   };
 
-  useEffect(() => {
-    handleChange(null, label.name, imageURL);
-  }, [imageURL]);
+  const handleSignatureChange = (signature) => {
+    handleChange(null, "Bestand", signature);
+  };
+
 
   return (
     <div className="sign">
@@ -69,6 +74,10 @@ const Sign = ({ label, handleChange }) => {
           />
         </>
       )}
+      <br />
+      {/* <button onClick={download} style={{ padding: "5px", marginTop: "5px" }}>
+        Download
+      </button> */}
     </div>
   );
 };

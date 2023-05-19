@@ -1,0 +1,10 @@
+@use "../variables.scss" as *;
+
+.thankyou {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
