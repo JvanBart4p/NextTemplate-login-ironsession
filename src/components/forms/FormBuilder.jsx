@@ -8,7 +8,7 @@ import FileInput from "./FileInput";
 import Radio from "./Radio";
 import { useRouter } from "next/router";
 
-const FormsBuilder = ({ forms }) => {
+const FormsBuilder = ({ forms, formSelect }) => {
   const [answers, setAnswers] = useState({});
   const [signature, setSignature] = useState("");
   const [submitted, setSubmitted] = useState(false)
@@ -39,7 +39,7 @@ const FormsBuilder = ({ forms }) => {
       // "vr6",
       // formData.Vraag6,
     );
-    const results = await PostData("forms/form1", formData);
+    const results = await PostData(`forms/form${formSelect}`, formData);
     if (results.status === 200) {
       console.log("res", results)
       setSubmitted(true)

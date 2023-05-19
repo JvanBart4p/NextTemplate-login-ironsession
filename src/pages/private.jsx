@@ -5,12 +5,15 @@ import { useState } from "react";
 import FormsBuilder from "../components/forms/FormBuilder";
 import Relations from "../components/Relations";
 
+
 const PrivatePage = ({ user }) => {
+  const [formSelect, setFormSelect] = useState(1);
   const [showForms, setShowForms] = useState(false);
   const [showRelations, setShowRelations] = useState(false);
   const [forms, setForms] = useState([]);
   const [selectedForm, setSelectedForm] = useState(null);
   const [relaties, setRelaties] = useState("");
+
 
   const getFormRelatie = async () => {
     const relatie = await GetData("relatie");
@@ -22,7 +25,7 @@ const PrivatePage = ({ user }) => {
 
   const fetchData = async () => {
     try {
-      const response = await GetData("forms/form1");
+      const response = await GetData(`forms/form${formSelect}`);
       const data = await response;
       setForms(data);
     } catch (error) {
@@ -43,6 +46,8 @@ const PrivatePage = ({ user }) => {
   const selectForm = (form) => {
     setSelectedForm(form);
   };
+
+
 
   return (
     <div className="private">
@@ -77,7 +82,7 @@ const PrivatePage = ({ user }) => {
           {selectedForm && (
             <div>
               <h2>{selectedForm.title}</h2>
-              <FormsBuilder forms={selectedForm} />
+              <FormsBuilder forms={selectedForm} formSelect={formSelect} />
             </div>
           )}
           {showRelations && <Relations relaties={relaties} />}
