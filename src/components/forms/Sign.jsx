@@ -20,6 +20,7 @@ const Sign = ({ handleChange, setSignature }) => {
   };
 
   const handleSignatureChange = (signature) => {
+    signature &&
     handleChange(null, "Bestand", signature);
   };
 

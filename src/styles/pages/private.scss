@@ -2,18 +2,20 @@
 
 .private {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 10rem 2rem 5rem;
-
-    &__content {
+    display: grid;
+    grid-template-columns: 20rem calc(80vw - 20rem);
+    margin: 0 2rem 5rem 0;
+    width: 100vw;
+    &__buttoncontainer {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-width: 80vw;
-        text-align: center;
+        button{
+            padding: 2rem 5rem;
+        }
+    }
+
+    &__content {
+     margin: 5rem;
     }
     &__form {
         display: flex;

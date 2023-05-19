@@ -14,6 +14,8 @@ const FormsBuilder = ({ forms }) => {
   const [submitted, setSubmitted] = useState(false)
   const router = useRouter();
 
+  console.log(forms)
+
 
   const handleChange = (e, name, item) => {
     if (item || e === null) {
@@ -32,9 +34,10 @@ const FormsBuilder = ({ forms }) => {
     };
     console.log(
       "formdata",
-      formData.Bestand.replace(/^data:application\/pdf;base64,/, ""),
-      "vr6",
-      formData.Vraag6,
+      formData
+      // .Bestand.replace(/^data:application\/pdf;base64,/, ""),
+      // "vr6",
+      // formData.Vraag6,
     );
     const results = await PostData("forms/form1", formData);
     if (results.status === 200) {
@@ -45,28 +48,6 @@ const FormsBuilder = ({ forms }) => {
       console.log(`results failed ${results}`)
     }
   };
-  const formGetter = () => {
-    console.log("getforms")
-  }
-
-  // const handleSubmit = (e, data) => {
-  //   e.preventDefault();
-  //   const body = new FormData();
-  //   Object.entries(data).forEach(([key, value]) => {
-  //     if (key === "Bestand" && value) {
-  //       body.append(key, value); // Append the file separately
-  //     } else {
-  //       body.append(key, value);
-  //     }
-  //   });
-  //   body.append("Vraag6", signature);
-
-  //   for (var pair of body.entries()) {
-  //     console.log(pair[0] + ": " + pair[1]);
-  //   }
-
-  //   PostData("forms/form1", body);
-  // };
 
   return (
     <div>
@@ -75,20 +56,23 @@ const FormsBuilder = ({ forms }) => {
       ) : (
         <form onSubmit={(e) => handleSubmit(e, answers)}>
           {forms &&
-            forms.map((item, index) => {
-              return (
-                <div className="private__form" key={`formtest${index}`}>
-                  {item.fields.length > 0 && <h2>{item.title}</h2>}
-                  {item.fields.map((label, i) => {
+            forms.fields.map((label, i) => {
                     return (
                       <div key={`${label.name}${i}`}>
-                        {label.type === "textarea" || "text" && (
-                          <Input
-                            label={label}
-                            handleChange={handleChange}
-                            submitted={submitted}
-                          />
-                        )}
+                        {label.type === "text" && (
+                            <Input
+                              label={label}
+                              handleChange={handleChange}
+                              submitted={submitted}
+                            />
+                          )}
+                        {label.type === "textarea" && 
+                            <Input
+                              label={label}
+                              handleChange={handleChange}
+                              submitted={submitted}
+                            />
+                          }
                         {label.type === "canvas" && (
                           <div className="private__form-items">
                             <label htmlFor="">{label.name}</label>
@@ -114,9 +98,6 @@ const FormsBuilder = ({ forms }) => {
                       </div>
                     );
                   })}
-                </div>
-              );
-            })}
           <button type="submit">submit</button>
         </form>
       )}
