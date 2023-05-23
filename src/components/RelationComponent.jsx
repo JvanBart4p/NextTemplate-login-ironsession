@@ -1,4 +1,4 @@
-const Relations = ({relaties}) => {
+const RelationComponent = ({relaties}) => {
     console.log(relaties)
     return (
       <div>
@@ -14,4 +14,4 @@ const Relations = ({relaties}) => {
     );
 }
 
-export default Relations
+export default RelationComponent;

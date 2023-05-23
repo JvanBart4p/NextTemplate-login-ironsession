@@ -5,6 +5,7 @@ const Logout = () => {
   const router = useRouter();
 
   const handleLogout = async () => {
+    console.log("hello")
     const results = await GetData("logout");
     if (results.status === 200) {
       const response = await fetch("/api/logout");

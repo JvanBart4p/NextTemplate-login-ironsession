@@ -1,12 +1,17 @@
 @charset "UTF-8";
 
 @forward "./pages/index.scss";
-@forward "./pages/private.scss";
+@forward "./pages/dashboard.scss";
 @forward "./pages/custom404.scss";
 @forward "./pages/thankyou.scss";
+@forward "./pages//relations.scss";
+@forward "./pages/forms.scss";
+@forward "./pages/user.scss";
 //layout
 @forward "./components/layout/header.scss";
 @forward "./components/layout/footer.scss";
+@forward "./components/layout/mobileMenu.scss";
+@forward "./components/layout/side.scss";
 //components
 @forward "./components/forms/login.scss";
 @forward "./components/forms/sign.scss";

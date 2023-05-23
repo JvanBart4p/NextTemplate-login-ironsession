@@ -1,11 +1,7 @@
 @use "../variables.scss" as *;
 
-.private {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 20rem calc(80vw - 20rem);
-    margin: 0 2rem 5rem 0;
-    width: 100vw;
+.dashboard {
+    display: flex;
     &__buttoncontainer {
         display: flex;
         flex-direction: column;

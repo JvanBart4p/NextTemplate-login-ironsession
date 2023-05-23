@@ -4,6 +4,7 @@ import Login from "../components/forms/login";
 import { useRouter } from "next/router";
 import { withSessionSsr } from "./lib/config/withSession";
 import Link from "next/link";
+import Header from "../components/Layout/Header";
 
 export default function Home({ user }) {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function Home({ user }) {
       body: JSON.stringify({ email, password, uniqueId }),
     });
     if (response.ok) {
-      return router.push("/private");
+      return router.push("/dashboard");
     }
   };
 
@@ -36,19 +37,23 @@ export default function Home({ user }) {
   };
 
   return (
-    <div className={"home"}>
-      {!user ? (
-        <Login
-          setUsername={setUsername}
-          setPassword={setPassword}
-          handleLogin={handleLogin}
-        />
-      ) : (
-        <div>
-          <Link href="/private">private</Link>
-        </div>
-      )}
-    </div>
+    <>
+      {!user ? <Header loggedIn={false} /> : <Header loggedIn={true} />}
+
+      <div className={"home"}>
+        {!user ? (
+          <Login
+            setUsername={setUsername}
+            setPassword={setPassword}
+            handleLogin={handleLogin}
+          />
+        ) : (
+          <div>
+            <Link href="/dashboard">private</Link>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

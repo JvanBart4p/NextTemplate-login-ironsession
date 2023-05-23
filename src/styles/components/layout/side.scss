@@ -1,0 +1,13 @@
+@use "../../variables.scss" as *;
+
+.side-wrapper {
+    &__item {
+        padding: 2rem 6rem;
+        background-color: #f2f2f3;
+        border: 1px solid black;
+        border-bottom: none;
+    }
+}
+.last {
+    border-bottom: 1px solid black;
+}

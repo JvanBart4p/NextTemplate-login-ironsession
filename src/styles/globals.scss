@@ -35,6 +35,17 @@ body {
     cursor: pointer;
     color: gray;
   }
+  .mobile-only{
+    @include tablet{
+      display: none;
+    }
+  }
+  .tablet-up{
+    display: none;
+    @include tablet{
+      display: block;
+    }
+  }
 
   #__next {
     display: flex;
