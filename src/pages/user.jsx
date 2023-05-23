@@ -16,7 +16,6 @@ const UserDataPage = ({ user }) => {
     getUsers();
   }, []);
 
-  console.log(users)
 
   return (
     <>
