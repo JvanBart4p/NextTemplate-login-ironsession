@@ -1,6 +1,25 @@
 @use "./config/colors" as *;
 @use "./config/breakpoints" as *;
 
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 900;
+  src: url("../../public/fonts/Roboto/Roboto-Black.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  src: url("../../public/fonts/Roboto/Roboto-Medium.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../public/fonts/Roboto/Roboto-Regular.ttf") format('truetype');
+  font-weight: 400;
+}
+
 html {
   box-sizing: border-box;
   height: 100%;
@@ -8,6 +27,7 @@ html {
   font-size: 62.5%; // 10px
 }
 body {
+  font-family: "Roboto", sans-serif;
   position: relative;
   overflow-x: hidden;
   margin: 0;

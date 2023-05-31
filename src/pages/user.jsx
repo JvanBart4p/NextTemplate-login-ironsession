@@ -16,18 +16,17 @@ const UserDataPage = ({ user }) => {
     getUsers();
   }, []);
 
-
   return (
     <>
       {!user ? <Header loggedIn={false} /> : <Header loggedIn={true} />}
       <div className="user">
         <Side />
-        <div>
-          <h2>
-            {users.UUID_UserAccount}
-          </h2>
-          <h2>{users.Username}</h2>
-        </div>
+        {users && (
+          <div>
+            <h2>{users.UUID_UserAccount}</h2>
+            <h2>{users.Username}</h2>
+          </div>
+        )}
       </div>
     </>
   );
