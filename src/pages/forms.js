@@ -4,6 +4,8 @@ import { GetData } from "./api/fetch";
 import Header from "../components/Layout/Header";
 import FormsBuilder from "../components/forms/FormBuilder";
 import Side from "../components/Layout/Side";
+import Button from "../components/Layout/Button";
+// import { redirect } from "next/dist/server/api-utils";
 
 const Forms = ({ user }) => {
   const [formSelect, setFormSelect] = useState(1);
@@ -39,10 +41,12 @@ const Forms = ({ user }) => {
       {!user ? <Header loggedIn={false} /> : <Header loggedIn={true} />}
       <div className="forms">
         <Side />
-        <div>
-          <button onClick={toggleForms}>
-            {showForms ? "Hide Forms" : "Show Forms"}
-          </button>
+        <main>
+          <Button
+            onclick={toggleForms}
+            text={showForms ? "Hide Forms" : "Show Forms"}
+            style={"orange"}
+          />
           {showForms && (
             <div>
               {forms &&
@@ -65,7 +69,7 @@ const Forms = ({ user }) => {
               </div>
             )}
           </div>
-        </div>
+        </main>
       </div>
     </>
   );
@@ -77,9 +81,10 @@ export const getServerSideProps = withSessionSsr(async ({ req, res }) => {
   const user = req.session.user;
 
   if (!user) {
-    return {
-      notFound: true,
-    };
+      // redirect(res, "/");
+        return {
+          notFound: true,
+        };
   }
   return {
     props: { user },

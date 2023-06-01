@@ -22,10 +22,10 @@ const UserDataPage = ({ user }) => {
       <div className="user">
         <Side />
         {users && (
-          <div>
+          <main>
             <h2>{users.UUID_UserAccount}</h2>
             <h2>{users.Username}</h2>
-          </div>
+          </main>
         )}
       </div>
     </>

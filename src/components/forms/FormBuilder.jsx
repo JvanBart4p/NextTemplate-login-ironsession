@@ -50,11 +50,11 @@ const FormsBuilder = ({ forms, formSelect }) => {
   };
 
   return (
-    <div>
+    <div className="formbuilder">
       {submitted ? (
         <div>thanks for submitting</div>
       ) : (
-        <form onSubmit={(e) => handleSubmit(e, answers)}>
+        <form onSubmit={(e) => handleSubmit(e, answers)} className="formbuilder__wrapper">
           {forms &&
             forms.fields.map((label, i) => {
                     return (

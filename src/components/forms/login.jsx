@@ -1,3 +1,5 @@
+import Button from "../Layout/Button";
+
 const Login = ({ handleLogin, setUsername, setPassword }) => {
   return (
     <section className="login">
@@ -12,7 +14,7 @@ const Login = ({ handleLogin, setUsername, setPassword }) => {
         type="password"
         placeholder="password"
       ></input>
-      <button onClick={handleLogin}>Submit</button>
+      <Button onclick={handleLogin} text={"Login"} style={"orange"}/>
     </section>
   );
 };

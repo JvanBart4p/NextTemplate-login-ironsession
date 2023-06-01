@@ -1,8 +1,13 @@
 @use "../variables.scss" as *;
 
 .home {
-    display: flex;
-    justify-content: center;
-    margin-top: 10rem;
-    min-height: 100vh;
+    &__login {
+        display: flex;
+        justify-content: center;
+        margin-top: 10rem;
+        min-height: 100vh;
+    }
+    &__loggedin {
+        display: flex;
+    }
 }

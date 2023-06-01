@@ -2,6 +2,8 @@
 
 .header {
   box-shadow: 0 5px 20px -2px rgba($color: #000000, $alpha: 0.2);
+  width: 100vw;
+  z-index: 5;
   &__wrapper {
     height: 5.6rem;
     background-color: #f2f2f3;

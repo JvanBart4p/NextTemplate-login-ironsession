@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const MobileNavMenu = () => {
   return (
-    <div className="mobileMenu__wrapper">
+    <div className="mobilemenu__wrapper">
       <Link href="/dashboard" className="">
         <div className="">Dashboard</div>
       </Link>

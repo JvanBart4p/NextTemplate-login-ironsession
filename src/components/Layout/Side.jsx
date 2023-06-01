@@ -4,7 +4,7 @@ const Side = () => {
   return (
     <div className="side-wrapper tablet-up">
       <Link href="/dashboard" className="side-wrapper__link">
-        <div className="side-wrapper__item">Dashboard</div>
+        <div className="side-wrapper__item first">Dashboard</div>
       </Link>
       <Link href="/user" className="side-wrapper__link">
         <div className="side-wrapper__item">User</div>

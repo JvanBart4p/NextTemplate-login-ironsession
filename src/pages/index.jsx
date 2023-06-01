@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PostData } from "./api/fetch";
 import Login from "../components/forms/login";
 import { useRouter } from "next/router";
 import { withSessionSsr } from "./lib/config/withSession";
 import Link from "next/link";
 import Header from "../components/Layout/Header";
+import Side from "../components/Layout/Side";
 
 export default function Home({ user }) {
   const router = useRouter();
@@ -25,6 +26,7 @@ export default function Home({ user }) {
     }
   };
 
+
   const handleLogin = async () => {
     const body = {
       email: userName,
@@ -40,16 +42,21 @@ export default function Home({ user }) {
     <>
       {!user ? <Header loggedIn={false} /> : <Header loggedIn={true} />}
 
-      <div className={"home"}>
+      <div className="home">
         {!user ? (
-          <Login
-            setUsername={setUsername}
-            setPassword={setPassword}
-            handleLogin={handleLogin}
-          />
+          <div className="home__login">
+            <Login
+              setUsername={setUsername}
+              setPassword={setPassword}
+              handleLogin={handleLogin}
+            />
+          </div>
         ) : (
-          <div>
-            <Link href="/dashboard">private</Link>
+          <div div className="home__loggedin">
+            <Side />
+            <main>
+              <Link href="/dashboard">private</Link>
+            </main>
           </div>
         )}
       </div>

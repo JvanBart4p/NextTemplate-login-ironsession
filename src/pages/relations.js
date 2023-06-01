@@ -22,7 +22,7 @@ const Relations = ({ user }) => {
       {!user ? <Header loggedIn={false} /> : <Header loggedIn={true} />}
       <div className="relations">
         <Side />
-        {client && <RelationComponent relaties={client} />}
+        <main>{client && <RelationComponent relaties={client} />}</main>
       </div>
     </>
   );

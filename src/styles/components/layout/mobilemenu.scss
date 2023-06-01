@@ -1,18 +1,25 @@
 @use "../../variables.scss" as *;
 
-.mobileMenu {
+.mobilemenu {
     position: absolute;
-    height: 100vh;
-    width: 100vw;
-    background: rgba($color: #000000, $alpha: 0.9);
-    padding: 2rem 4rem;
+    width: 100%;
+    height: 100%;
+    background-color: $button-color;
+    a {
+        color: black;
+        font-size: 2rem;
+        text-decoration: underline 1px solid blue;
+        text-underline-offset: 0.5rem;
+        &:hover {
+            color: $button-hover-color;
+        }
+    }
     &__wrapper {
+        padding-top: 7rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        a {
-            color: white;
-            font-size:3rem;
-        }
+        justify-content: center;
+        align-items: center;
     }
 }
