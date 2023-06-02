@@ -94,7 +94,7 @@ const Test = () => {
           <Button
             onclick={toggleForms}
             text={showForms ? "Hide Forms" : "Show Forms"}
-            style={"orange"}
+            style={"blue"}
           />
           {showForms && (
             <div>
