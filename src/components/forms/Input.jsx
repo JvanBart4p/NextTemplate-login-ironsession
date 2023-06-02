@@ -3,7 +3,7 @@ import { useState } from "react";
 const Input = ({ label, handleChange, submitted }) => {
 
   return (
-    <div className="private__form-items">
+    <div className="inputWrapper">
       <label> {label.label}</label>
       <input
         type={label.type}

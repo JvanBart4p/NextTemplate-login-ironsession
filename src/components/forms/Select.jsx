@@ -11,7 +11,7 @@ const Select = ({ label, handleChange }) => {
   );
 
   return (
-    <div className="private__form-items">
+    <div className="selectWrapper">
       <label>{label.name}</label>
       <select
         defaultValue={value}

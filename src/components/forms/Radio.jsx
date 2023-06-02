@@ -10,9 +10,9 @@ const Radio = ({ label, handleChange }) => {
   }, [selectedVal]);
 
   return (
-    <div className="private__form-items">
+    <div className="radio">
       <label> {label.label}</label>
-      <div>
+      <div className="radio__wrapper">
         {label.options.map((item, i) => {
           return (
             <div key={`radioOption${i}`}>

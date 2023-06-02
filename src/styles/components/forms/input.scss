@@ -1,0 +1,10 @@
+@use "../../variables.scss" as *;
+
+.inputWrapper{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    input{
+        min-width: 30rem;
+    }
+}

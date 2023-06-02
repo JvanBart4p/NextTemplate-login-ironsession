@@ -1,0 +1,15 @@
+@use "../../variables.scss" as *;
+
+
+.radio{
+    display: flex;
+    gap: 2rem;
+    &__wrapper{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        outline: 1px solid $button-color;
+        padding: 2rem;
+        border-radius: 10px;
+    }
+}
