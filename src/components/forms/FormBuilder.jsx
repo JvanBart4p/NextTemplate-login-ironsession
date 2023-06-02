@@ -7,6 +7,7 @@ import Select from "./Select";
 import FileInput from "./FileInput";
 import Radio from "./Radio";
 import { useRouter } from "next/router";
+import Button from "../Layout/Button";
 
 const FormsBuilder = ({ forms, formSelect }) => {
   const [answers, setAnswers] = useState({});
@@ -54,51 +55,51 @@ const FormsBuilder = ({ forms, formSelect }) => {
       {submitted ? (
         <div>thanks for submitting</div>
       ) : (
-        <form onSubmit={(e) => handleSubmit(e, answers)} className="formbuilder__wrapper">
+        <form
+          onSubmit={(e) => handleSubmit(e, answers)}
+          className="formbuilder__wrapper"
+        >
           {forms &&
             forms.fields.map((label, i) => {
-                    return (
-                      <div key={`${label.name}${i}`}>
-                        {label.type === "text" && (
-                            <Input
-                              label={label}
-                              handleChange={handleChange}
-                              submitted={submitted}
-                            />
-                          )}
-                        {label.type === "textarea" && 
-                            <Input
-                              label={label}
-                              handleChange={handleChange}
-                              submitted={submitted}
-                            />
-                          }
-                        {label.type === "canvas" && (
-                          <div className="private__form-items">
-                            <label htmlFor="">{label.name}</label>
-                            <Sign
-                              label={label}
-                              handleChange={handleChange}
-                              setSignature={setSignature}
-                            />
-                          </div>
-                        )}
-                        {label.type === "file" && (
-                          <FileInput
-                            label={label}
-                            handleChange={handleChange}
-                          />
-                        )}
-                        {label.type === "select" && (
-                          <Select label={label} handleChange={handleChange} />
-                        )}
-                        {label.type === "radio" && (
-                          <Radio label={label} handleChange={handleChange} />
-                        )}
-                      </div>
-                    );
-                  })}
-          <button type="submit">submit</button>
+              return (
+                <div key={`${label.name}${i}`}>
+                  {label.type === "text" && (
+                    <Input
+                      label={label}
+                      handleChange={handleChange}
+                      submitted={submitted}
+                    />
+                  )}
+                  {label.type === "textarea" && (
+                    <Input
+                      label={label}
+                      handleChange={handleChange}
+                      submitted={submitted}
+                    />
+                  )}
+                  {label.type === "canvas" && (
+                    <div className="private__form-items">
+                      <label htmlFor="">{label.name}</label>
+                      <Sign
+                        label={label}
+                        handleChange={handleChange}
+                        setSignature={setSignature}
+                      />
+                    </div>
+                  )}
+                  {label.type === "file" && (
+                    <FileInput label={label} handleChange={handleChange} />
+                  )}
+                  {label.type === "select" && (
+                    <Select label={label} handleChange={handleChange} />
+                  )}
+                  {label.type === "radio" && (
+                    <Radio label={label} handleChange={handleChange} />
+                  )}
+                </div>
+              );
+            })}
+          <Button type={"submit"} text={"submit"} style={"orange"} />
         </form>
       )}
     </div>

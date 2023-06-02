@@ -52,12 +52,12 @@ const Forms = ({ user }) => {
               {forms &&
                 forms.length > 0 &&
                 forms.map((form, i) => (
-                  <button
+                  <Button
                     key={`form-${form.title}-${i}`}
-                    onClick={() => selectForm(form)}
-                  >
-                    {form.title}
-                  </button>
+                    onclick={() => selectForm(form)}
+                    text={form.title}
+                    style={"orange"}
+                  />
                 ))}
             </div>
           )}
