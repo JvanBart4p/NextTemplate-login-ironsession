@@ -55,6 +55,35 @@ async function PostData(type, data = {}) {
   return result;
 }
 
+async function PostDataFormData(type, data = {}) {
+  const csrf = await getCSRF();
+  const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${type}`, {
+    method: "POST",
+    cache: "no-cache",
+    headers: {
+      "X-CSRF-Token": csrf,
+    },
+    credentials: "include",
+    redirect: "manual",
+    referrerPolicy: "no-referrer",
+    body: data,
+  })
+    .then(async (response) => {
+      const json = await response.json();
+      json.status = response.status;
+      return json;
+    })
+    .catch(() => {
+      return {
+        message:
+          "Je verzoek kon niet worden verwerkt. Probeer het later opnieuw.",
+        status: 500,
+      };
+    });
+  return result;
+}
+
+
 async function getCSRF() {
   const result = await GetData("csrf");
   if (result && result.status === 200) {
@@ -64,4 +93,4 @@ async function getCSRF() {
   }
 }
 
-export { PostData, GetData };
+export { PostData, GetData, PostDataFormData };

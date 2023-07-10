@@ -91,22 +91,29 @@ const Test = () => {
       <div className="forms">
         <Side />
         <main>
-          <Button
-            onclick={toggleForms}
-            text={showForms ? "Hide Forms" : "Show Forms"}
-            style={"blue"}
-          />
+          <div className="forms__button-wrapper">
+            <Button
+              onclick={toggleForms}
+              text={showForms ? "Hide Forms" : "Show Forms"}
+              style={"blue"}
+            />
+          </div>
+
           {showForms && (
             <div>
               {forms &&
                 forms.length > 0 &&
                 forms.map((form, i) => (
-                  <Button
+                  <div
+                    className="forms__button-wrapper"
                     key={`form-${form.title}-${i}`}
-                    onclick={() => selectForm(form)}
-                    text={form.title}
-                    style={"orange"}
-                  />
+                  >
+                    <Button
+                      onclick={() => selectForm(form)}
+                      text={form.title}
+                      style={"orange"}
+                    />
+                  </div>
                 ))}
             </div>
           )}

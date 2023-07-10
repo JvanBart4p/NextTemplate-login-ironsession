@@ -2,4 +2,7 @@
 
 .forms{
     display: flex;
+    &__button-wrapper{
+        margin: 0 2rem 2rem 0;
+    }
 }

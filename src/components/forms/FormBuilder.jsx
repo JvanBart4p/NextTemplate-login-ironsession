@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PostData } from "../../pages/api/fetch";
+import { PostData, PostDataFormData } from "../../pages/api/fetch";
 
 import Sign from "./Sign";
 import Input from "./Input";
@@ -12,11 +12,10 @@ import Button from "../Layout/Button";
 const FormsBuilder = ({ forms, formSelect }) => {
   const [answers, setAnswers] = useState({});
   const [signature, setSignature] = useState("");
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(false);
   const router = useRouter();
 
-  console.log(forms)
-
+  console.log(forms);
 
   const handleChange = (e, name, item) => {
     if (item || e === null) {
@@ -27,26 +26,41 @@ const FormsBuilder = ({ forms, formSelect }) => {
   };
 
   const handleSubmit = async (e, data) => {
+    const formData = new FormData();
+    console.log("data", data);
     e.preventDefault();
-    const formData = {
+    const form = {
       ...data,
-      Vraag6: signature,
       Bestand: data.Bestand,
+      Vraag6: signature,
     };
+
+    console.log("form", form);
+
+    Object.entries(form).forEach(([key, value]) => {
+      console.log(key, value)
+      formData.append(key, value);
+    });
+
+    // const urlEncoded = new URLSearchParams(formData).toString();
+
     console.log(
       "formdata",
-      formData
-      // .Bestand.replace(/^data:application\/pdf;base64,/, ""),
+      formData,
+      // Bestand.replace(/^data:application\/pdf;base64,/, ""),
       // "vr6",
       // formData.Vraag6,
     );
-    const results = await PostData(`forms/form${formSelect}`, formData);
+    const results = await PostDataFormData(
+      `forms/form${formSelect}`,
+      formData,
+    );
     if (results.status === 200) {
-      console.log("res", results)
-      setSubmitted(true)
+      console.log("res", results);
+      setSubmitted(true);
       router.push("/thankYou");
-    }else{
-      console.log(`results failed ${results}`)
+    } else {
+      console.log(`results failed ${results}`);
     }
   };
 
