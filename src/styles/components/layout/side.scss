@@ -1,15 +1,16 @@
 @use "../../variables.scss" as *;
 
 .side-wrapper {
+    margin-top: 9.8rem;
+    height: 100vh;
+    background-color: $main-bg-color;
+    border-right: 1px solid gray;
     &__item {
+        
         padding: 2rem 6rem;
-        background-color: #f2f2f3;
-        border: 1px solid gray;
-        border-bottom: none;
+        background-color: $button-hover-color;
+        border-bottom: 1px solid gray;
     }
-}
-.last {
-    border-bottom: 1px solid gray;
 }
 .first {
     border-top: none;

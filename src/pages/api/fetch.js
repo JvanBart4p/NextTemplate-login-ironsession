@@ -25,7 +25,6 @@ async function GetData(type) {
 }
 
 async function PostData(type, data = {}) {
-
   const csrf = await getCSRF();
   const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${type}`, {
     method: "POST",
@@ -82,7 +81,6 @@ async function PostDataFormData(type, data = {}) {
     });
   return result;
 }
-
 
 async function getCSRF() {
   const result = await GetData("csrf");
